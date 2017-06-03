@@ -9,9 +9,8 @@ module.exports = {
 	entry: APP_PATH,
 	devtool: "source-map",
 	output: {
-		path: BUILD_PATH,
-		filename: 'bundle.js',
-		publicPath: '/js/'
+		path: path.join(BUILD_PATH, "/js/"),
+		filename: 'bundle.js'
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],
@@ -37,7 +36,14 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			mangle: {
+				except: ['$super', '$', 'exports', 'require']
+			},
+			output: {
+				comments: false
+			}
+		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.LoaderOptionsPlugin({
 			options: {
