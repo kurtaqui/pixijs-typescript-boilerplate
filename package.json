@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack",
+    "build:fix": "webpack --env.fix",
     "build:watch": "webpack --watch"
   },
   "author": "Kurt Aquilina",
@@ -21,6 +22,7 @@
     "typescript": "^2.3.4",
     "url-loader": "^0.5.8",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "yargs": "^8.0.1"
   }
 }

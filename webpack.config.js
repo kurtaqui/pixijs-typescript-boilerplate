@@ -1,9 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
+const argv = require('yargs').argv;
 const webpackDevServer = require('webpack-dev-server');
 
 const APP_PATH = path.resolve(__dirname, "src/index.ts");
 const BUILD_PATH = path.resolve(__dirname, "www");
+
+let tslintAutofix;
+if (argv && argv.env) {
+	tslintAutofix = argv.env.fix;
+}
 
 module.exports = {
 	entry: APP_PATH,
@@ -49,7 +55,8 @@ module.exports = {
 			options: {
 				tslint: {
 					emitErrors: true,
-					failOnHint: true
+					failOnHint: true,
+					fix: tslintAutofix
 				}
 			}
 		})
