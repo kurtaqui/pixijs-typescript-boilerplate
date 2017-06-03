@@ -1,9 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const argv = require('yargs').argv;
-const webpackDevServer = require('webpack-dev-server');
+const webpackDevServer = require('webpack-dev-server'); 
+const CopyWebpackPlugin = require('copy-webpack-plugin'); 
 
-const APP_PATH = path.resolve(__dirname, "src/index.ts");
+const ROOT = path.resolve(__dirname, "src");
+const APP_PATH = path.join(ROOT, "index.ts");
 const BUILD_PATH = path.resolve(__dirname, "www");
 
 let tslintAutofix;
@@ -50,6 +52,9 @@ module.exports = {
 				comments: false
 			}
 		}),
+		new CopyWebpackPlugin([
+			{ from:  path.join(ROOT, "index.html"), to: path.join(BUILD_PATH, "index.html")}
+		]),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.LoaderOptionsPlugin({
 			options: {
