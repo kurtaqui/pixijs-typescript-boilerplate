@@ -2,7 +2,7 @@ import { Application, IApplicationOptions, loader } from "pixi.js";
 
 import { SpaceshipImage } from "./assets/index";
 import { Spaceship } from "./components/index";
-import { resizeHandler } from "./handlers/index";
+import { globalhandler } from "./handlers/index";
 import { SCREEN_SIZE } from "./settings.const";
 
 export class Main {
@@ -16,7 +16,7 @@ export class Main {
 
 	constructor() {
 		this.app = new Application(SCREEN_SIZE.width, SCREEN_SIZE.height, this.settings);
-		resizeHandler.get()
+		globalhandler.onResize()
 			.startWith({})
 			.subscribe(() => this.resize());
 

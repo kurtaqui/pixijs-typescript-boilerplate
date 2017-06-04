@@ -48,9 +48,7 @@ module.exports = {
 			mangle: {
 				except: ['$super', '$', 'exports', 'require']
 			},
-			output: {
-				comments: false
-			}
+			sourceMap: true
 		}),
 		new CopyWebpackPlugin([
 			{ from:  path.join(ROOT, "index.html"), to: path.join(BUILD_PATH, "index.html")}

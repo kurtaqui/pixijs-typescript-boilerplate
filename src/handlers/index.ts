@@ -1,3 +1,3 @@
-import { resizeHandler } from "./resize.handler";
+import { globalhandler } from "./global.handler";
 
-export { resizeHandler };
+export { globalhandler };
