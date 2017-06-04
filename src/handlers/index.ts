@@ -1,3 +1,8 @@
-import { globalhandler } from "./global.handler";
+import { globalhandler } from "./global/global.handler";
+import { DIRECTION, Direction } from "./global/global.const";
 
-export { globalhandler };
+export {
+	globalhandler,
+	DIRECTION,
+	Direction
+};

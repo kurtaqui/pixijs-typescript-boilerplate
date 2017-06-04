@@ -1,3 +1,9 @@
-import { Spaceship } from "./spaceship";
+import { Spaceship } from "./spaceship.sprite";
+import { Asteroid } from "./asteroid.sprite";
+import { AsteroidContainer } from "./asteroid.container";
 
-export { Spaceship };
+export {
+	Spaceship,
+	Asteroid,
+	AsteroidContainer
+};

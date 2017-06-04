@@ -1,8 +1,12 @@
 import { Observable } from "rxjs/Observable";
 
 class GlobalHandler {
-	onKeyPress(): Observable<KeyboardEvent> {
-		return Observable.fromEvent(document, "keypress");
+	onKeyDown(): Observable<KeyboardEvent> {
+		return Observable.fromEvent(document, "keydown");
+	}
+
+	onKeyUp(): Observable<KeyboardEvent> {
+		return Observable.fromEvent(document, "keyup");
 	}
 
 	onResize(): Observable<Event> {
