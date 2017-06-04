@@ -1,8 +1,8 @@
 import { Container, ticker } from "pixi.js";
+
 import { SCREEN_SIZE } from "../settings.const";
 import { generateRandom } from "../utils";
-
-import { Asteroid } from "./asteroid";
+import { Asteroid } from "./asteroid.sprite";
 
 export class AsteroidContainer extends Container {
 
