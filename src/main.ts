@@ -1,7 +1,8 @@
 import { Application, IApplicationOptions, loader } from "pixi.js";
 
-import { SpaceshipImage } from "./assets";
-import { Spaceship } from "./components";
+import { SpaceshipImage } from "./assets/index";
+import { Spaceship } from "./components/index";
+import { ResizeHandler } from "./handlers/index";
 import { SCREEN_SIZE } from "./settings.const";
 
 export class Main {
@@ -15,9 +16,12 @@ export class Main {
 
 	constructor() {
 		this.app = new Application(SCREEN_SIZE.width, SCREEN_SIZE.height, this.settings);
-		this.resize();
+		new ResizeHandler().get()
+			.startWith({})
+			.subscribe(() => this.resize());
+
 		document.body.appendChild(this.app.view);
-		window.onresize = this.resize.bind(this);
+
 		loader.add(Spaceship.prototype.name, SpaceshipImage)
 			.load(this.setup.bind(this));
 	}
