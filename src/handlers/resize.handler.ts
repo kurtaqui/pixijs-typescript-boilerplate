@@ -1,6 +1,6 @@
 import { Observable } from "rxjs/Observable";
 
-export class ResizeHandler {
+class ResizeHandler {
 
 	private resize$: Observable<Event>;
 
@@ -13,3 +13,5 @@ export class ResizeHandler {
 	}
 
 }
+
+export const resizeHandler = new ResizeHandler();
