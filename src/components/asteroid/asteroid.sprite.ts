@@ -1,12 +1,14 @@
 import { Sprite, loader, ticker } from "pixi.js";
 
-import { generateRandom } from "../utils";
-import { SCREEN_SIZE } from "../settings.const";
+import { generateRandom } from "../../utils";
+import { collisionHandler} from "../../handlers/index";
+import { SCREEN_SIZE } from "../../settings.const";
+import { EnemySprite } from "../sprite.model";
 
-export class Asteroid extends Sprite {
+export class Asteroid extends Sprite implements EnemySprite {
 
+	ticker$: ticker.Ticker;
 	private speed = 15;
-	private ticker$: ticker.Ticker;
 
 	get name() {
 		return "asteroid";
@@ -20,6 +22,7 @@ export class Asteroid extends Sprite {
 		this.position.set(xPosition, -this.height);
 		this.ticker$ = new ticker.Ticker().add(this.startMoving.bind(this));
 		this.ticker$.start();
+		collisionHandler.pushEnemy(this);
 	}
 
 	private startMoving() {
