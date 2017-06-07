@@ -1,10 +1,3 @@
-import { collisionHandler } from "./collision.handler";
-import { globalhandler } from "./global/global.handler";
-import { DIRECTION, Direction } from "./global/global.const";
-
-export {
-	globalhandler,
-	DIRECTION,
-	Direction,
-	collisionHandler
-};
+export { collisionHandler } from "./collision.handler";
+export { globalhandler } from "./global/global.handler";
+export { DIRECTION, Direction } from "./global/global.const";

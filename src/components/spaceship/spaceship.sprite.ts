@@ -11,6 +11,7 @@ import {
 	DIRECTION
 } from "../../handlers/index";
 import { SCREEN_SIZE } from "../../settings.const";
+import { degreesToRadians } from "../../utils";
 import { ParticleImage } from "../../assets/index";
 import { explosionParticleConfig } from "./spaceship.const";
 
@@ -20,8 +21,8 @@ export class Spaceship extends Sprite {
 	private speed = 30;
 	private direction: Direction;
 	private keyCommands = {
-		a: DIRECTION.left,
-		d: DIRECTION.right
+		w: DIRECTION.up,
+		s: DIRECTION.down
 	};
 
 	get name() {
@@ -80,24 +81,25 @@ export class Spaceship extends Sprite {
 			config
 		);
 		this.particleEmitter.emit = false;
-		this.position.set(SCREEN_SIZE.width / 2, (SCREEN_SIZE.height - this.height / 2) + 10);
+		this.position.set(this.height + 10, (SCREEN_SIZE.height / 2));
+		this.rotation = degreesToRadians(90);
 	}
 
 	private moveAction(direction: Direction) {
 		switch (direction) {
-			case DIRECTION.left: {
-				this.position.x -= this.speed;
+			case DIRECTION.up: {
+				this.position.y -= this.speed;
 				break;
 			}
-			case DIRECTION.right: {
-				this.position.x += this.speed;
+			case DIRECTION.down: {
+				this.position.y += this.speed;
 				break;
 			}
 		}
-		if (this.position.x < 0) {
-			this.position.x = SCREEN_SIZE.width;
-		} else if (this.position.x > SCREEN_SIZE.width) {
-			this.position.x = 0;
+		if (this.position.y < 0) {
+			this.position.y = SCREEN_SIZE.height;
+		} else if (this.position.y > SCREEN_SIZE.height) {
+			this.position.y = 0;
 		}
 	}
 

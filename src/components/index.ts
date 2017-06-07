@@ -1,11 +1,5 @@
-import { Spaceship } from "./spaceship/spaceship.sprite";
-import { Asteroid } from "./asteroid/asteroid.sprite";
-import { AsteroidContainer } from "./asteroid/asteroid.container";
-import { EnemySprite } from "./sprite.model";
-
-export {
-	Spaceship,
-	Asteroid,
-	AsteroidContainer,
-	EnemySprite
-};
+export { BackgroundTilingSprite } from "./background/background.sprite";
+export { Spaceship } from "./spaceship/spaceship.sprite";
+export { Asteroid } from "./asteroid/asteroid.sprite";
+export { AsteroidContainer } from "./asteroid/asteroid.container";
+export { EnemySprite } from "./sprite.model";

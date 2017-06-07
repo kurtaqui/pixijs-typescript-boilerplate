@@ -1,7 +1,12 @@
 import { Application, IApplicationOptions, loader } from "pixi.js";
 
-import { SpaceshipImage, AsteroidImage } from "./assets/index";
-import { Spaceship, Asteroid, AsteroidContainer } from "./components/index";
+import { SpaceshipImage, AsteroidImage, SpaceImage } from "./assets/index";
+import {
+	Spaceship,
+	Asteroid,
+	AsteroidContainer,
+	BackgroundTilingSprite
+} from "./components/index";
 import { globalhandler } from "./handlers/index";
 import { SCREEN_SIZE } from "./settings.const";
 
@@ -24,14 +29,17 @@ export class Main {
 
 		loader.add(Spaceship.prototype.name, SpaceshipImage)
 			.add(Asteroid.prototype.name, AsteroidImage)
+			.add(BackgroundTilingSprite.prototype.name, SpaceImage)
 			.load(this.setup.bind(this));
 	}
 
 	private setup() {
+		const bg = new BackgroundTilingSprite();
 		const spaceship = new Spaceship();
 		const asteroidContainer = new AsteroidContainer();
 		this.app.stage
 			.addChild(
+				bg,
 				spaceship,
 				asteroidContainer
 			);
